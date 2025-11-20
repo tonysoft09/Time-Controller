@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pomodoro Focus App - Fokus va samaradorlik uchun zamonaviy ilova">
+    <title>Time Controller - ANDURANCE</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-icons">
+                <div class="splash-icon clock-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="splash-icon calendar-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+            <h1 class="splash-title">Time Controller</h1>
+            <p class="splash-subtitle">ANDURANCE</p>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="gradient-wave"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Rain Animation -->
+        <div class="rain-container">
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+        </div>
+        
+        <!-- City Scene -->
+        <div class="city-scene">
+            <!-- Eiffel Tower -->
+            <div class="eiffel-tower">
+                <div class="tower-base"></div>
+                <div class="tower-middle"></div>
+                <div class="tower-top"></div>
+                <div class="tower-antenna"></div>
+            </div>
+            
+            <!-- Cars -->
+            <div class="car car-1">
+                <div class="car-body"></div>
+                <div class="car-window"></div>
+                <div class="car-wheel wheel-1"></div>
+                <div class="car-wheel wheel-2"></div>
+            </div>
+            <div class="car car-2">
+                <div class="car-body"></div>
+                <div class="car-window"></div>
+                <div class="car-wheel wheel-1"></div>
+                <div class="car-wheel wheel-2"></div>
+            </div>
+            <div class="car car-3">
+                <div class="car-body"></div>
+                <div class="car-window"></div>
+                <div class="car-wheel wheel-1"></div>
+                <div class="car-wheel wheel-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title"><i class="fas fa-tomato"></i> Time Controller</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="home">
+                <i class="fas fa-clock tab-icon"></i>
+                <span class="tab-label">Timer</span>
+            </button>
+            <button class="nav-tab" data-tab="sounds">
+                <i class="fas fa-volume-up tab-icon"></i>
+                <span class="tab-label">Sounds</span>
+            </button>
+            <button class="nav-tab" data-tab="todo">
+                <i class="fas fa-check-circle tab-icon"></i>
+                <span class="tab-label">To-Do</span>
+            </button>
+            <button class="nav-tab" data-tab="stats">
+                <i class="fas fa-chart-bar tab-icon"></i>
+                <span class="tab-label">Stats</span>
+            </button>
+            <button class="nav-tab" data-tab="settings">
+                <i class="fas fa-cog tab-icon"></i>
+                <span class="tab-label">Settings</span>
+            </button>
+            <button class="nav-tab" data-tab="author">
+                <i class="fas fa-user tab-icon"></i>
+                <span class="tab-label">Muallif</span>
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="tab-content">
+            <!-- HOME Tab -->
+            <section class="tab-panel active" id="home">
+                <div class="timer-container">
+                    <!-- Timer Mode Selector -->
+                    <div class="timer-modes">
+                        <button class="mode-btn active" data-mode="pomodoro" data-time="25">Pomodoro<br><small>25 min</small></button>
+                        <button class="mode-btn" data-mode="short-break" data-time="5">Short Break<br><small>5 min</small></button>
+                        <button class="mode-btn" data-mode="long-break" data-time="15">Long Break<br><small>15 min</small></button>
+                    </div>
+
+                    <!-- Custom Time Input -->
+                    <div class="custom-time">
+                        <label for="customMinutes">Custom Time (minutes):</label>
+                        <input type="number" id="customMinutes" min="1" max="60" value="25" class="custom-input">
+                        <button class="btn-secondary" id="applyCustom">Apply</button>
+                    </div>
+
+                    <!-- Progress Ring -->
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="280" height="280">
+                            <circle class="progress-ring-circle-bg" cx="140" cy="140" r="130"></circle>
+                            <circle class="progress-ring-circle" cx="140" cy="140" r="130"></circle>
+                        </svg>
+                        <div class="timer-display">
+                            <div class="timer-time" id="timerDisplay">25:00</div>
+                            <div class="timer-status" id="timerStatus">Ready</div>
+                        </div>
+                    </div>
+
+                    <!-- Timer Controls -->
+                    <div class="timer-controls">
+                        <button class="btn-primary btn-large" id="startBtn">
+                            <i class="fas fa-play btn-icon"></i>
+                            <span>Start</span>
+                        </button>
+                        <button class="btn-primary btn-large" id="pauseBtn" disabled>
+                            <i class="fas fa-pause btn-icon"></i>
+                            <span>Pause</span>
+                        </button>
+                        <button class="btn-secondary btn-large" id="resetBtn">
+                            <i class="fas fa-redo btn-icon"></i>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+
+                    <!-- Focus Mode Indicator -->
+                    <div class="focus-mode-indicator" id="focusModeIndicator">
+                        <i class="fas fa-lock focus-icon"></i>
+                        <span>Focus Mode Active</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOUNDS Tab -->
+            <section class="tab-panel" id="sounds">
+                <div class="sounds-container">
+                    <h2 class="section-title">Relaxing Sounds</h2>
+                    
+                    <!-- Master Volume Control -->
+                    <div class="master-volume">
+                        <label for="masterVolume">Master Volume</label>
+                        <input type="range" id="masterVolume" min="0" max="100" value="50" class="volume-slider">
+                        <span class="volume-value" id="masterVolumeValue">50%</span>
+                    </div>
+
+                    <!-- Sound Cards -->
+                    <div class="sounds-grid">
+                        <div class="sound-card" data-sound="rain">
+                            <div class="sound-icon"><i class="fas fa-cloud-rain"></i></div>
+                            <h3>Yomg'ir</h3>
+                            <button class="sound-toggle" data-sound="rain">
+                                <span class="toggle-text">OFF</span>
+                            </button>
+                            <div class="sound-volume-control">
+                                <input type="range" class="volume-slider sound-volume" data-sound="rain" min="0" max="100" value="50">
+                                <span class="volume-value">50%</span>
+                            </div>
+                        </div>
+
+                        <div class="sound-card" data-sound="fireplace">
+                            <div class="sound-icon"><i class="fas fa-fire"></i></div>
+                            <h3>Kamin Olovi</h3>
+                            <button class="sound-toggle" data-sound="fireplace">
+                                <span class="toggle-text">OFF</span>
+                            </button>
+                            <div class="sound-volume-control">
+                                <input type="range" class="volume-slider sound-volume" data-sound="fireplace" min="0" max="100" value="50">
+                                <span class="volume-value">50%</span>
+                            </div>
+                        </div>
+
+                        <div class="sound-card" data-sound="forest">
+                            <div class="sound-icon"><i class="fas fa-tree"></i></div>
+                            <h3>Tungi O'rmon</h3>
+                            <button class="sound-toggle" data-sound="forest">
+                                <span class="toggle-text">OFF</span>
+                            </button>
+                            <div class="sound-volume-control">
+                                <input type="range" class="volume-slider sound-volume" data-sound="forest" min="0" max="100" value="50">
+                                <span class="volume-value">50%</span>
+                            </div>
+                        </div>
+
+                        <div class="sound-card" data-sound="river">
+                            <div class="sound-icon"><i class="fas fa-water"></i></div>
+                            <h3>Daryo</h3>
+                            <button class="sound-toggle" data-sound="river">
+                                <span class="toggle-text">OFF</span>
+                            </button>
+                            <div class="sound-volume-control">
+                                <input type="range" class="volume-slider sound-volume" data-sound="river" min="0" max="100" value="50">
+                                <span class="volume-value">50%</span>
+                            </div>
+                        </div>
+
+                        <div class="sound-card" data-sound="nature">
+                            <div class="sound-icon"><i class="fas fa-leaf"></i></div>
+                            <h3>Tabiat</h3>
+                            <button class="sound-toggle" data-sound="nature">
+                                <span class="toggle-text">OFF</span>
+                            </button>
+                            <div class="sound-volume-control">
+                                <input type="range" class="volume-slider sound-volume" data-sound="nature" min="0" max="100" value="50">
+                                <span class="volume-value">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TODO Tab -->
+            <section class="tab-panel" id="todo">
+                <div class="todo-container">
+                    <h2 class="section-title">To-Do List</h2>
+                    
+                    <!-- Add Todo Form -->
+                    <div class="todo-form">
+                        <input type="text" id="todoInput" placeholder="Yangi vazifa qo'shing..." class="todo-input">
+                        <input type="datetime-local" id="todoDateTime" class="todo-datetime" title="Bajarish vaqti (ixtiyoriy)">
+                        <button class="btn-primary" id="addTodoBtn">
+                            <i class="fas fa-plus btn-icon"></i>
+                            <span>Qo'shish</span>
+                        </button>
+                    </div>
+
+                    <!-- Todo List -->
+                    <div class="todo-list" id="todoList">
+                        <!-- Todos will be dynamically added here -->
+                    </div>
+
+                    <!-- Todo Stats -->
+                    <div class="todo-stats">
+                        <span>Jami: <strong id="totalTodos">0</strong></span>
+                        <span>Bajarildi: <strong id="completedTodos">0</strong></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATS Tab -->
+            <section class="tab-panel" id="stats">
+                <div class="stats-container">
+                    <h2 class="section-title">Statistics</h2>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-tomato"></i></div>
+                            <div class="stat-value" id="totalPomodoros">0</div>
+                            <div class="stat-label">Completed Pomodoros</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-value" id="totalFocusTime">0</div>
+                            <div class="stat-label">Total Focus Time (min)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
+                            <div class="stat-value" id="todayFocusTime">0</div>
+                            <div class="stat-label">Today's Focus (min)</div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="chart-container">
+                        <h3>Daily Focus Time (Last 7 Days)</h3>
+                        <div class="chart" id="focusChart">
+                            <!-- Chart bars will be generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Reset Stats Button -->
+                    <button class="btn-secondary" id="resetStatsBtn">Reset Statistics</button>
+                </div>
+            </section>
+
+            <!-- AUTHOR Tab -->
+            <section class="tab-panel" id="author">
+                <div class="author-container">
+                    <h2 class="section-title">Muallif</h2>
+                    
+                    <div class="author-card">
+                        <!-- Author Photo -->
+                        <div class="author-photo-container">
+                            <img src="assets/author/photo.jpg" alt="Muallif" class="author-photo" id="authorPhoto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="author-photo-placeholder" style="display: none;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Author Info -->
+                        <div class="author-info">
+                            <h3 class="author-name">Null</h3>
+                            <p class="author-bio">"ANDURANCE" rahbari</p>
+                            
+                            <!-- Social Links -->
+                            <div class="author-social">
+                                <a href="https://instagram.com/mr.null_00" target="_blank" class="social-link instagram" id="instagramLink">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://t.me/@Null002" target="_blank" class="social-link telegram" id="telegramLink">
+                                    <i class="fab fa-telegram"></i>
+                                    <span>Telegram</span>
+                                </a>
+                            </div>
+                            
+                            <!-- Contact -->
+                            <div class="author-contact">
+                                <a href="tel:+998901234567" class="contact-link" id="phoneLink">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+998 50 540 22 87</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Info -->
+                    <div class="company-info">
+                        <h4>ANDURANCE</h4>
+                        <p>Time Controller dasturi ANDURANCE kompaniyasi tomonidan yaratilgan</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SETTINGS Tab -->
+            <section class="tab-panel" id="settings">
+                <div class="settings-container">
+                    <h2 class="section-title">Settings</h2>
+                    
+                    <div class="settings-list">
+                        <!-- Theme Toggle -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Dark Mode</h3>
+                                <p>Qorong'u yoki yorug' rejim</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <!-- Pomodoro Time -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Pomodoro Time (minutes)</h3>
+                                <p>Asosiy fokus vaqti</p>
+                            </div>
+                            <input type="number" id="pomodoroTime" min="1" max="60" value="25" class="setting-input">
+                        </div>
+
+                        <!-- Short Break Time -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Short Break (minutes)</h3>
+                                <p>Qisqa tanaffus vaqti</p>
+                            </div>
+                            <input type="number" id="shortBreakTime" min="1" max="30" value="5" class="setting-input">
+                        </div>
+
+                        <!-- Long Break Time -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Long Break (minutes)</h3>
+                                <p>Uzoq tanaffus vaqti</p>
+                            </div>
+                            <input type="number" id="longBreakTime" min="1" max="60" value="15" class="setting-input">
+                        </div>
+
+                        <!-- Sound Autoplay -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Sound Autoplay</h3>
+                                <p>Timer boshlanganda tovush avtomatik yoqilsin</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="soundAutoplay">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Notifications</h3>
+                                <p>Timer tugaganda bildirishnoma</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="notificationsToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <!-- Vibration -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Vibration</h3>
+                                <p>Mobil qurilmalarda tebranish</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="vibrationToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Audio Elements (hidden) -->
+    <audio id="rainAudio" loop preload="auto"></audio>
+    <audio id="fireplaceAudio" loop preload="auto"></audio>
+    <audio id="forestAudio" loop preload="auto"></audio>
+    <audio id="riverAudio" loop preload="auto"></audio>
+    <audio id="natureAudio" loop preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
